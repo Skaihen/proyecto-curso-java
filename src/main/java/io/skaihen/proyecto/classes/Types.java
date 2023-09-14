@@ -7,7 +7,7 @@ public class Types {
     private Types() {
     };
 
-    public static List<Integer> getTypeStrengthsAndWeaknesses(String type) {
+    public static List<Integer> getTypeChart(String type) {
 
     }
 }
