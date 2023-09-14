@@ -8,24 +8,24 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Move {
-    private final int id;
-    private final String name;
-    private final String type;
-    private final String category;
-    private final int pp;
-    private final int power;
-    private final int accuracy;
-    private final int priority;
+    private final int ID;
+    private final String NAME;
+    private final String TYPE;
+    private final String CATEGORY;
+    private final int PP;
+    private final int POWER;
+    private final int ACCURACY;
+    private final int PRIORITY;
 
     public Move(int id, String name, String type, String category, int pp, int power, int accuracy, int priority) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-        this.category = category;
-        this.pp = pp;
-        this.power = power;
-        this.accuracy = accuracy;
-        this.priority = priority;
+        this.ID = id;
+        this.NAME = name;
+        this.TYPE = type;
+        this.CATEGORY = category;
+        this.PP = pp;
+        this.POWER = power;
+        this.ACCURACY = accuracy;
+        this.PRIORITY = priority;
     }
 
     public static List<Move> getMovesCSV() {
@@ -61,35 +61,36 @@ public class Move {
         return moves;
     }
 
-    public int getId() {
-        return id;
+    public int getID() {
+        return ID;
     }
 
-    public String getName() {
-        return name;
+    public String getNAME() {
+        return NAME;
     }
 
-    public String getType() {
-        return type;
+    public String getTYPE() {
+        return TYPE;
     }
 
-    public String getCategory() {
-        return category;
+    public String getCATEGORY() {
+        return CATEGORY;
     }
 
-    public int getPp() {
-        return pp;
+    public int getPP() {
+        return PP;
     }
 
-    public int getPower() {
-        return power;
+    public int getPOWER() {
+        return POWER;
     }
 
-    public int getAccuracy() {
-        return accuracy;
+    public int getACCURACY() {
+        return ACCURACY;
     }
 
-    public int getPriority() {
-        return priority;
+    public int getPRIORITY() {
+        return PRIORITY;
     }
+
 }

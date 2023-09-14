@@ -26,7 +26,7 @@ public class Pokemon {
         this.speed = speed;
     }
 
-    public void recieveDamage(Move move) {
+    public void takeDamage(Move move) {
 
     };
 }
