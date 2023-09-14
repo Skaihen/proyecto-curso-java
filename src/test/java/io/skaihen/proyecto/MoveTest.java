@@ -2,7 +2,7 @@ package io.skaihen.proyecto;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -12,7 +12,7 @@ public class MoveTest {
 
     @Test
     public void getMovesCSVTest() {
-        List<Move> moves = Move.getMovesCSV();
+        ArrayList<Move> moves = Move.getMovesCSV();
 
         String[] expected1 = { "001", "Placaje", "normal", "physical", "35", "40", "100", "+0" };
         String[] expected2 = { "002", "Ataque Rapido", "normal", "physical", "30", "40", "100", "+1" };

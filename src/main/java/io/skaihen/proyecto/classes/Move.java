@@ -28,9 +28,9 @@ public class Move {
         this.PRIORITY = priority;
     }
 
-    public static List<Move> getMovesCSV() {
-        List<Move> moves = new ArrayList<>();
-        List<List<String>> movesList = new ArrayList<>();
+    public static ArrayList<Move> getMovesCSV() {
+        ArrayList<Move> moves = new ArrayList<>();
+        ArrayList<List<String>> movesList = new ArrayList<>();
 
         try (BufferedReader bfreader = new BufferedReader(
                 new FileReader(System.getProperty("user.dir") + "/src/main/resources/movesList.csv"))) {
@@ -42,20 +42,20 @@ public class Move {
                 movesList.add(Arrays.asList(values));
             }
 
+            for (List<String> move : movesList) {
+                moves.add(new Move(
+                        Integer.parseInt(move.get(0)),
+                        move.get(1),
+                        move.get(2),
+                        move.get(3),
+                        Integer.parseInt(move.get(4)),
+                        Integer.parseInt(move.get(5)),
+                        Integer.parseInt(move.get(6)),
+                        Integer.parseInt(move.get(7))));
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
-        }
-
-        for (List<String> move : movesList) {
-            moves.add(new Move(
-                    Integer.parseInt(move.get(0)),
-                    move.get(1),
-                    move.get(2),
-                    move.get(3),
-                    Integer.parseInt(move.get(4)),
-                    Integer.parseInt(move.get(5)),
-                    Integer.parseInt(move.get(6)),
-                    Integer.parseInt(move.get(7))));
         }
 
         return moves;
