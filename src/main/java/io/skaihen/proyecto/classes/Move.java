@@ -8,20 +8,21 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Move {
-    private int id;
-    private String name;
-    private String type;
-    private String category;
-    private int pp;
-    private int power;
-    private int accuracy;
-    private int priority;
+    private final int id;
+    private final String name;
+    private final String type;
+    private final String category;
+    private final int pp;
+    private final int power;
+    private final int accuracy;
+    private final int priority;
 
-    public Move(int id, String name, String type, String category, int power, int accuracy, int priority) {
+    public Move(int id, String name, String type, String category, int pp, int power, int accuracy, int priority) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.category = category;
+        this.pp = pp;
         this.power = power;
         this.accuracy = accuracy;
         this.priority = priority;
@@ -53,7 +54,8 @@ public class Move {
                     move.get(3),
                     Integer.parseInt(move.get(4)),
                     Integer.parseInt(move.get(5)),
-                    Integer.parseInt(move.get(6))));
+                    Integer.parseInt(move.get(6)),
+                    Integer.parseInt(move.get(7))));
         }
 
         return moves;
