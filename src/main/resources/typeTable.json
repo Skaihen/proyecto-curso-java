@@ -1,0 +1,16 @@
+{
+    "fire": {
+        "strong": [
+            "bug",
+            "steel",
+            "grass",
+            "ice"
+        ],
+        "weak": [
+            "rock",
+            "fire",
+            "water",
+            "dragon"
+        ]
+    }
+}
