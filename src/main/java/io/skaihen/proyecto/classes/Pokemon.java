@@ -1,5 +1,8 @@
 package io.skaihen.proyecto.classes;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Pokemon { // No usar final en id y type1-2 para al implementar evolución poder cambiar el
                        // numero de pokemon al siguiente
     private int id;
@@ -27,8 +30,14 @@ public class Pokemon { // No usar final en id y type1-2 para al implementar evol
         this.speed = speed;
     }
 
-    public void takeDamage(Move move) {
+    public void recieveAttack(Move move) {
+        HashMap<String, Integer> typeChart = Types.getTypeChart(move.getTYPE());
 
+        typeChart.forEach(null);
+
+        for (Map.Entry<String, Integer> entry : typeChart.entrySet()) {
+            System.out.println("key: " + entry.getKey() + "; value: " + entry.getValue());
+        }
     };
 
     public int getId() {

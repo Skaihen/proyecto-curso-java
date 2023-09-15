@@ -42,17 +42,15 @@ public class Move {
                 movesList.add(Arrays.asList(values));
             }
 
-            for (List<String> move : movesList) {
-                moves.add(new Move(
-                        Integer.parseInt(move.get(0)),
-                        move.get(1),
-                        move.get(2),
-                        move.get(3),
-                        Integer.parseInt(move.get(4)),
-                        Integer.parseInt(move.get(5)),
-                        Integer.parseInt(move.get(6)),
-                        Integer.parseInt(move.get(7))));
-            }
+            movesList.forEach((move) -> moves.add(new Move(
+                    Integer.parseInt(move.get(0)),
+                    move.get(1),
+                    move.get(2),
+                    move.get(3),
+                    Integer.parseInt(move.get(4)),
+                    Integer.parseInt(move.get(5)),
+                    Integer.parseInt(move.get(6)),
+                    Integer.parseInt(move.get(7)))));
 
         } catch (IOException e) {
             e.printStackTrace();

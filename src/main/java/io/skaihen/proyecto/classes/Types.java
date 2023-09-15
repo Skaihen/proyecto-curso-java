@@ -4,11 +4,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
-import org.json.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class Types {
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+final public class Types {
 
     private Types() {
     };
@@ -20,9 +22,9 @@ public class Types {
         try (FileReader fileReader = new FileReader(
                 System.getProperty("user.dir") + "/src/main/resources/typeChart.json")) {
 
-            JSONArray typeChartArray = (JSONArray) jsonParser.parse(fileReader);
+            JSONObject jsonObj = (JSONObject) jsonParser.parse(fileReader);
 
-            typeChartArray
+            typeChart.putAll(new ObjectMapper().readValue(jsonObj.get(type).toString(), HashMap.class));
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
