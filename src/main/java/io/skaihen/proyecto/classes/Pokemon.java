@@ -31,13 +31,17 @@ public class Pokemon { // No usar final en id y type1-2 para al implementar evol
     }
 
     public void recieveAttack(Move move) {
-        HashMap<String, Integer> typeChart = Types.getTypeChart(move.getTYPE());
+        HashMap<String, Float> typeChart = Types.getTypeChart(move.getTYPE());
+        int totalDamage = move.getPOWER();
 
-        typeChart.forEach(null);
+        for (Map.Entry<String, Float> entry : typeChart.entrySet()) {
+            if (entry.getKey() == this.getType1() || entry.getKey() == this.getType2()) {
+                totalDamage = (int) Math.round(totalDamage * entry.getValue().intValue());
+            }
 
-        for (Map.Entry<String, Integer> entry : typeChart.entrySet()) {
-            System.out.println("key: " + entry.getKey() + "; value: " + entry.getValue());
         }
+
+        this.hp -= totalDamage;
     };
 
     public int getId() {
