@@ -2,6 +2,7 @@ package io.skaihen.proyecto.classes;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class Pokemon {
     // No usar final en id y type1-2 para al implementar evolución poder cambiar el
@@ -9,7 +10,7 @@ public class Pokemon {
 
     // TODO Cambiar los movimientos a un atributo hasMoves y los pokemons a un json
     // con sus movimientos y estadisticas.
-    private int id;
+    private static int id = 0;
     private String name;
     private String type1;
     private String type2;
@@ -21,10 +22,10 @@ public class Pokemon {
     private int specialDefense;
     private int speed;
 
-    public Pokemon(int id, String name, String type1, String type2, int level, int hp, int attack, int defense,
+    public Pokemon(String name, String type1, String type2, int level, int hp, int attack, int defense,
             int specialAttack,
             int specialDefense, int speed) {
-        this.id = id;
+        id++;
         this.name = name;
         this.type1 = type1;
         this.type2 = type2;
@@ -46,7 +47,9 @@ public class Pokemon {
                 : ((((((2 * enemyPokemon.getLevel()) / 5) + 2) * move.getPOWER() * enemyPokemon.getSpecialAttack()
                         / getSpecialDefense()) / 50) + 2);
 
-        if
+        if (enemyPokemon.getType1() == move.getTYPE() || enemyPokemon.getType2() == move.getTYPE()) {
+            totalDamage *= 1.5;
+        }
 
         for (Map.Entry<String, Double> entry : typeChart.entrySet()) {
             if (entry.getKey() == this.getType1() || entry.getKey() == this.getType2()) {
@@ -54,7 +57,11 @@ public class Pokemon {
             }
         }
 
-        this.hp -= totalDamage;
+        if (totalDamage >= 1) {
+            totalDamage = totalDamage * (new Random().nextInt(39) + 217) / 255;
+        }
+
+        this.hp -= (int) Math.round(totalDamage);
     };
 
     public int getId() {
