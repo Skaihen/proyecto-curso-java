@@ -29,6 +29,11 @@ public class Move {
     }
 
     public static ArrayList<Move> getMovesCSV() {
+
+        // La idea inicial era tener todos los movimientos en una lista y
+        // llamarlos por id, pero es mejor que cada pokemon tenga los suyos un
+        // una lista propia e ir creandolos conforme haga falta
+
         ArrayList<Move> moves = new ArrayList<>();
         ArrayList<List<String>> movesList = new ArrayList<>();
 

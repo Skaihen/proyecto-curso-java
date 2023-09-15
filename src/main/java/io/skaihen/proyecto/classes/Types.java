@@ -15,8 +15,8 @@ final public class Types {
     private Types() {
     };
 
-    public static HashMap<String, Float> getTypeChart(String type) {
-        HashMap<String, Float> typeChart = new HashMap<>();
+    public static HashMap<String, Double> getTypeChart(String type) {
+        HashMap<String, Double> typeChart = new HashMap<>();
         JSONParser jsonParser = new JSONParser();
 
         try (FileReader fileReader = new FileReader(
