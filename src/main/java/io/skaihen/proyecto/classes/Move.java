@@ -28,6 +28,11 @@ public class Move {
         this.PRIORITY = priority;
     }
 
+    /**
+     * Parsea un csv y devuelve una lista con losobjetos (Move) en el.
+     *
+     * @return ArrayList de los movimientos encontrados en el csv movesList.
+     */
     public static ArrayList<Move> getMovesCSV() {
 
         // La idea inicial era tener todos los movimientos en una lista y

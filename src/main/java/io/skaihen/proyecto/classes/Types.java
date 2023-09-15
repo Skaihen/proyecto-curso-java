@@ -15,6 +15,14 @@ final public class Types {
     private Types() {
     };
 
+    /**
+     * Toma el tipo de un ataque y devuelve un mapa con los tipos contra los que
+     * tiene ventaja y desventaja.
+     *
+     * @param type Tipo del ataque realizado.
+     * @return Mapa con tipo del pokemon defensor y la ventaja o desventaja que
+     *         posee.
+     */
     public static HashMap<String, Double> getTypeChart(String type) {
         HashMap<String, Double> typeChart = new HashMap<>();
         JSONParser jsonParser = new JSONParser();

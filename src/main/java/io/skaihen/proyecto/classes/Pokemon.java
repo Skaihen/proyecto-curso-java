@@ -38,6 +38,13 @@ public class Pokemon {
         this.speed = speed;
     }
 
+    /**
+     * Calcula el daño recibido por un ataque enemigo y lo resta a la vida del
+     * pokemon.
+     *
+     * @param move         Movimiento realizado por el enemigo.
+     * @param enemyPokemon Pokemon enemigo.
+     */
     public void recieveAttack(Move move, Pokemon enemyPokemon) {
         HashMap<String, Double> typeChart = Types.getTypeChart(move.getTYPE());
 
