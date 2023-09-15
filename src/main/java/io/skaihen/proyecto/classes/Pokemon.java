@@ -47,7 +47,8 @@ public class Pokemon {
      */
     public void recieveAttack(Move move, Pokemon enemyPokemon) {
 
-        // Cambiar ecuacion de daño a [0.5 * power * attack/defense * modifier] + 1
+        // Cambiar ecuacion de daño a [0.5 * power * attack/defense * type * stab *
+        // random(0.75,1)] + 1
 
         HashMap<String, Double> typeChart = Types.getTypeChart(move.getTYPE());
 
