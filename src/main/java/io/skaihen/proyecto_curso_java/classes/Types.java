@@ -33,7 +33,6 @@ public final class Types {
 
             JSONObject jsonObj = (JSONObject) jsonParser.parse(fileReader);
 
-            // TODO Arreglar tipo del HashMap
             typeChart.putAll(new ObjectMapper().readValue(jsonObj.get(type).toString(), HashMap.class));
 
         } catch (IOException | ParseException e) {

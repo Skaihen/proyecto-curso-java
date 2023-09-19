@@ -5,12 +5,6 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Pokemon {
-    // No usar final en id y type1-2 para al implementar evolución poder cambiar el
-    // numero de pokemon al siguiente
-
-    // TODO Cambiar los movimientos a un atributo hasMoves y los pokemons a un json
-    // con sus movimientos y estadisticas.
-
     private Random random = new Random();
 
     private static int id = 0;
