@@ -24,10 +24,11 @@ public class Pokemon {
     private int specialAttack;
     private int specialDefense;
     private int speed;
+    private Move[] hasMoves = new Move[4];
 
     public Pokemon(String name, String type1, String type2, int level, int hp, int attack, int defense,
             int specialAttack,
-            int specialDefense, int speed) {
+            int specialDefense, int speed, Move[] hasMoves) {
         id++;
         this.name = name;
         this.type1 = type1;
@@ -39,6 +40,7 @@ public class Pokemon {
         this.specialAttack = specialAttack;
         this.specialDefense = specialDefense;
         this.speed = speed;
+        this.hasMoves = hasMoves;
     }
 
     /**
@@ -125,5 +127,9 @@ public class Pokemon {
 
     public int getSpeed() {
         return speed;
+    }
+
+    public Move[] getHasMoves() {
+        return hasMoves;
     }
 }
