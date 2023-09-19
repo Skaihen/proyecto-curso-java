@@ -1,4 +1,4 @@
-# Proyecto Java Pokémon
+# Proyecto Java Pokémon / David Hidalgo
 
 Este proyecto consiste en una pequeña implementación de los combates Pokémon, con cálculo de daño realizado basado en tipo, stab y demás factores.
 
