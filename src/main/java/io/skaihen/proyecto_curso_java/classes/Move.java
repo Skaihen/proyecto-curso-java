@@ -33,14 +33,14 @@ public class Move {
      *
      * @return ArrayList de los movimientos encontrados en el csv movesList.
      */
-    public static ArrayList<Move> getMovesCSV() {
+    public static List<Move> getMovesCSV() {
 
         // La idea inicial era tener todos los movimientos en una lista y
         // llamarlos por id, pero es mejor que cada pokemon tenga los suyos un
         // una lista propia e ir creandolos conforme haga falta
 
-        ArrayList<Move> moves = new ArrayList<>();
-        ArrayList<List<String>> movesList = new ArrayList<>();
+        List<Move> moves = new ArrayList<>();
+        List<List<String>> movesList = new ArrayList<>();
 
         try (BufferedReader bfreader = new BufferedReader(
                 new FileReader(System.getProperty("user.dir") + "/src/main/resources/movesList.csv"))) {
@@ -52,7 +52,7 @@ public class Move {
                 movesList.add(Arrays.asList(values));
             }
 
-            movesList.forEach((move) -> moves.add(new Move(
+            movesList.forEach(move -> moves.add(new Move(
                     Integer.parseInt(move.get(0)),
                     move.get(1),
                     move.get(2),

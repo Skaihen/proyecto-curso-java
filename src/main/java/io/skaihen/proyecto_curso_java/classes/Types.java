@@ -3,6 +3,7 @@ package io.skaihen.proyecto_curso_java.classes;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -10,7 +11,7 @@ import org.json.simple.parser.ParseException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-final public class Types {
+public final class Types {
 
     private Types() {
     };
@@ -23,7 +24,7 @@ final public class Types {
      * @return Mapa con tipo del pokemon defensor y la ventaja o desventaja que
      *         posee.
      */
-    public static HashMap<String, Double> getTypeChart(String type) {
+    public static Map<String, Double> getTypeChart(String type) {
         HashMap<String, Double> typeChart = new HashMap<>();
         JSONParser jsonParser = new JSONParser();
 

@@ -2,17 +2,19 @@ package io.skaihen.proyecto_curso_java;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import io.skaihen.proyecto_curso_java.classes.Move;
 
+@SpringBootTest
 public class MoveTest {
 
     @Test
     public void getMovesCSVTest() {
-        ArrayList<Move> moves = Move.getMovesCSV();
+        List<Move> moves = Move.getMovesCSV();
 
         String[] expected1 = { "001", "Placaje", "normal", "physical", "35", "40", "100", "+0" };
         String[] expected2 = { "002", "Ataque Rapido", "normal", "physical", "30", "40", "100", "+1" };

@@ -1,7 +1,7 @@
 package io.skaihen.proyecto_curso_java.classes;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 public class Pokemon {
@@ -10,6 +10,9 @@ public class Pokemon {
 
     // TODO Cambiar los movimientos a un atributo hasMoves y los pokemons a un json
     // con sus movimientos y estadisticas.
+
+    private Random random = new Random();
+
     private static int id = 0;
     private String name;
     private String type1;
@@ -50,30 +53,35 @@ public class Pokemon {
         // Cambiar ecuacion de daño a [0.5 * power * attack/defense * type * stab *
         // random(0.75,1)] + 1
 
-        HashMap<String, Double> typeChart = Types.getTypeChart(move.getTYPE());
+        Map<String, Double> typeChart = Types.getTypeChart(move.getTYPE());
 
-        int totalDamage = move.getCATEGORY() == "physical"
+        int totalDamage = "physical".equals(move.getCATEGORY())
                 ? ((((((2 * enemyPokemon.getLevel()) / 5) + 2) * move.getPOWER() * enemyPokemon.getAttack()
                         / getDefense()) / 50) + 2)
                 : ((((((2 * enemyPokemon.getLevel()) / 5) + 2) * move.getPOWER() * enemyPokemon.getSpecialAttack()
                         / getSpecialDefense()) / 50) + 2);
 
-        if (enemyPokemon.getType1() == move.getTYPE() || enemyPokemon.getType2() == move.getTYPE()) {
+        if (Objects.equals(enemyPokemon.getType1(), move.getTYPE())
+                || Objects.equals(enemyPokemon.getType2(), move.getTYPE())) {
             totalDamage *= 1.5;
         }
 
         for (Map.Entry<String, Double> entry : typeChart.entrySet()) {
-            if (entry.getKey() == this.getType1() || entry.getKey() == this.getType2()) {
+            if (Objects.equals(entry.getKey(), this.getType1()) || Objects.equals(entry.getKey(), this.getType2())) {
                 totalDamage = (int) Math.round(totalDamage * entry.getValue());
             }
         }
 
         if (totalDamage >= 1) {
-            totalDamage = totalDamage * (new Random().nextInt(39) + 217) / 255;
+            totalDamage = totalDamage * (this.getRandom().nextInt(39) + 217) / 255;
         }
 
-        this.hp -= (int) Math.round(totalDamage);
-    };
+        this.hp -= totalDamage;
+    }
+
+    public Random getRandom() {
+        return random;
+    }
 
     public int getId() {
         return id;

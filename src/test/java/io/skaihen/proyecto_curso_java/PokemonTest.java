@@ -3,10 +3,12 @@ package io.skaihen.proyecto_curso_java;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import io.skaihen.proyecto_curso_java.classes.Move;
 import io.skaihen.proyecto_curso_java.classes.Pokemon;
 
+@SpringBootTest
 public class PokemonTest {
 
     @Test
