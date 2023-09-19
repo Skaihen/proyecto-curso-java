@@ -1,104 +1,49 @@
 package io.skaihen.proyecto_curso_java.classes;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Move {
-    private final int ID;
-    private final String NAME;
-    private final String TYPE;
-    private final String CATEGORY;
-    private final int PP;
-    private final int POWER;
-    private final int ACCURACY;
-    private final int PRIORITY;
+    private final String name;
+    private final String type;
+    private final String category;
+    private final int pp;
+    private final int power;
+    private final int accuracy;
+    private final int priority;
 
-    public Move(int id, String name, String type, String category, int pp, int power, int accuracy, int priority) {
-        this.ID = id;
-        this.NAME = name;
-        this.TYPE = type;
-        this.CATEGORY = category;
-        this.PP = pp;
-        this.POWER = power;
-        this.ACCURACY = accuracy;
-        this.PRIORITY = priority;
+    public Move(String name, String type, String category, int pp, int power, int accuracy, int priority) {
+        this.name = name;
+        this.type = type;
+        this.category = category;
+        this.pp = pp;
+        this.power = power;
+        this.accuracy = accuracy;
+        this.priority = priority;
     }
 
-    /**
-     * Parsea un csv y devuelve una lista con losobjetos (Move) en el.
-     *
-     * @return ArrayList de los movimientos encontrados en el csv movesList.
-     */
-    public static List<Move> getMovesCSV() {
-
-        // La idea inicial era tener todos los movimientos en una lista y
-        // llamarlos por id, pero es mejor que cada pokemon tenga los suyos un
-        // una lista propia e ir creandolos conforme haga falta
-
-        List<Move> moves = new ArrayList<>();
-        List<List<String>> movesList = new ArrayList<>();
-
-        try (BufferedReader bfreader = new BufferedReader(
-                new FileReader(System.getProperty("user.dir") + "/src/main/resources/movesList.csv"))) {
-
-            String line;
-
-            while ((line = bfreader.readLine()) != null) {
-                String[] values = line.split(",");
-                movesList.add(Arrays.asList(values));
-            }
-
-            movesList.forEach(move -> moves.add(new Move(
-                    Integer.parseInt(move.get(0)),
-                    move.get(1),
-                    move.get(2),
-                    move.get(3),
-                    Integer.parseInt(move.get(4)),
-                    Integer.parseInt(move.get(5)),
-                    Integer.parseInt(move.get(6)),
-                    Integer.parseInt(move.get(7)))));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return moves;
+    public String getName() {
+        return name;
     }
 
-    public int getID() {
-        return ID;
+    public String getType() {
+        return type;
     }
 
-    public String getNAME() {
-        return NAME;
+    public String getCategory() {
+        return category;
     }
 
-    public String getTYPE() {
-        return TYPE;
+    public int getPp() {
+        return pp;
     }
 
-    public String getCATEGORY() {
-        return CATEGORY;
+    public int getPower() {
+        return power;
     }
 
-    public int getPP() {
-        return PP;
+    public int getAccuracy() {
+        return accuracy;
     }
 
-    public int getPOWER() {
-        return POWER;
+    public int getPriority() {
+        return priority;
     }
-
-    public int getACCURACY() {
-        return ACCURACY;
-    }
-
-    public int getPRIORITY() {
-        return PRIORITY;
-    }
-
 }

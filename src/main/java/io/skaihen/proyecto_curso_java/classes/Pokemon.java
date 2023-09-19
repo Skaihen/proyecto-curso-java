@@ -53,16 +53,16 @@ public class Pokemon {
         // Cambiar ecuacion de daño a [0.5 * power * attack/defense * type * stab *
         // random(0.75,1)] + 1
 
-        Map<String, Double> typeChart = Types.getTypeChart(move.getTYPE());
+        Map<String, Double> typeChart = Types.getTypeChart(move.getType());
 
-        int totalDamage = "physical".equals(move.getCATEGORY())
-                ? ((((((2 * enemyPokemon.getLevel()) / 5) + 2) * move.getPOWER() * enemyPokemon.getAttack()
+        int totalDamage = "physical".equals(move.getCategory())
+                ? ((((((2 * enemyPokemon.getLevel()) / 5) + 2) * move.getPower() * enemyPokemon.getAttack()
                         / getDefense()) / 50) + 2)
-                : ((((((2 * enemyPokemon.getLevel()) / 5) + 2) * move.getPOWER() * enemyPokemon.getSpecialAttack()
+                : ((((((2 * enemyPokemon.getLevel()) / 5) + 2) * move.getPower() * enemyPokemon.getSpecialAttack()
                         / getSpecialDefense()) / 50) + 2);
 
-        if (Objects.equals(enemyPokemon.getType1(), move.getTYPE())
-                || Objects.equals(enemyPokemon.getType2(), move.getTYPE())) {
+        if (Objects.equals(enemyPokemon.getType1(), move.getType())
+                || Objects.equals(enemyPokemon.getType2(), move.getType())) {
             totalDamage *= 1.5;
         }
 

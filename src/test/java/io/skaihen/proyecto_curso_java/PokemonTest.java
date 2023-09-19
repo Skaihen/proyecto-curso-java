@@ -17,8 +17,8 @@ public class PokemonTest {
 
         Pokemon caterpie = new Pokemon("Caterpie", "bug", null, 8, 45, 30, 35, 20, 20, 45);
 
-        geodude.recieveAttack(Move.getMovesCSV().get(0), caterpie);
+        geodude.recieveAttack(new Move("Placaje", "normal", "physical", 35, 40, 100, 0), caterpie);
 
-        assertEquals(geodude.getHp(), 39);
+        assertEquals(38, geodude.getHp());
     }
 }
