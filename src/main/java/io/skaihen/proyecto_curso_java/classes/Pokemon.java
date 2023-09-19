@@ -1,4 +1,4 @@
-package io.skaihen.proyecto.classes;
+package io.skaihen.proyecto_curso_java.classes;
 
 import java.util.HashMap;
 import java.util.Map;

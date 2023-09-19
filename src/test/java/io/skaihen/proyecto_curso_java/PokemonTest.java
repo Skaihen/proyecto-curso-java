@@ -1,11 +1,11 @@
-package io.skaihen.proyecto;
+package io.skaihen.proyecto_curso_java;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import io.skaihen.proyecto.classes.Move;
-import io.skaihen.proyecto.classes.Pokemon;
+import io.skaihen.proyecto_curso_java.classes.Move;
+import io.skaihen.proyecto_curso_java.classes.Pokemon;
 
 public class PokemonTest {
 

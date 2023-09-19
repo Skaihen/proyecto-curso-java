@@ -1,12 +1,12 @@
-package io.skaihen.proyecto;
+package io.skaihen.proyecto_curso_java;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import io.skaihen.proyecto.classes.Move;
+import io.skaihen.proyecto_curso_java.classes.Move;
 
 public class MoveTest {
 

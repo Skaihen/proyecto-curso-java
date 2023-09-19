@@ -1,4 +1,4 @@
-package io.skaihen.proyecto.classes;
+package io.skaihen.proyecto_curso_java.classes;
 
 import java.io.FileReader;
 import java.io.IOException;
