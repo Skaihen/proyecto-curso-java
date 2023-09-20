@@ -5,4 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PokemonRepository extends CrudRepository<Pokemon, Long> {
     Pokemon findById(long id);
+
+    Iterable<Pokemon> findAll();
+
+    Iterable<Pokemon> findByType1(String type1);
 }

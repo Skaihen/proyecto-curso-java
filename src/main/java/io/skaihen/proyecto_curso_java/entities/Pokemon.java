@@ -3,6 +3,7 @@ package io.skaihen.proyecto_curso_java.entities;
 import io.skaihen.proyecto_curso_java.classes.Move;
 import io.skaihen.proyecto_curso_java.classes.Types;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.Map;
 import java.util.Objects;
@@ -11,27 +12,38 @@ import java.util.Random;
 @Entity
 public class Pokemon {
 
+    @Transient
+    @NotBlank(message = "HasMoves is required")
+    private final Move[] hasMoves = new Move[4];
+    private final Random random = new Random();
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotBlank(message = "Name is required")
     private String name;
+    @NotBlank(message = "Type1 is required")
     private String type1;
+    @NotBlank(message = "Type2 is required")
     private String type2;
+    @NotBlank(message = "Level is required")
     private int level;
+    @NotBlank(message = "Hp is required")
     private int hp;
+    @NotBlank(message = "Attack is required")
     private int attack;
+    @NotBlank(message = "Defense is required")
     private int defense;
+    @NotBlank(message = "SpecialAttack is required")
     private int specialAttack;
+    @NotBlank(message = "SpecialDefense is required")
     private int specialDefense;
+    @NotBlank(message = "Speed is required")
     private int speed;
-    @Transient
-    private final Move[] hasMoves = new Move[4];
 
-    private final Random random = new Random();
+    protected Pokemon() {
+    }
 
-    protected Pokemon() {}
-
-    public Pokemon(Long id, String name, String type1, String type2, int level, int attack, int defense, int specialAttack, int specialDefense, int speed){
+    public Pokemon(Long id, String name, String type1, String type2, int level, int attack, int defense, int specialAttack, int specialDefense, int speed) {
         this.id = id;
         this.name = name;
         this.type1 = type1;
