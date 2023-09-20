@@ -1,40 +1,47 @@
-package io.skaihen.proyecto_curso_java.classes;
+package io.skaihen.proyecto_curso_java.entities;
+
+import io.skaihen.proyecto_curso_java.classes.Move;
+import io.skaihen.proyecto_curso_java.classes.Types;
+import jakarta.persistence.*;
 
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 
+@Entity
 public class Pokemon {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String name;
+    private String type1;
+    private String type2;
+    private int level;
+    private int hp;
+    private int attack;
+    private int defense;
+    private int specialAttack;
+    private int specialDefense;
+    private int speed;
+    @Transient
+    private final Move[] hasMoves = new Move[4];
+
     private final Random random = new Random();
 
-    private static int id = 0;
-    private final String name;
-    private final String type1;
-    private final String type2;
-    private final int level;
-    private int hp;
-    private final int attack;
-    private final int defense;
-    private final int specialAttack;
-    private final int specialDefense;
-    private final int speed;
-    private Move[] hasMoves = new Move[4];
+    protected Pokemon() {}
 
-    public Pokemon(String name, String type1, String type2, int level, int hp, int attack, int defense,
-            int specialAttack,
-            int specialDefense, int speed, Move[] hasMoves) {
-        id++;
+    public Pokemon(Long id, String name, String type1, String type2, int level, int attack, int defense, int specialAttack, int specialDefense, int speed){
+        this.id = id;
         this.name = name;
         this.type1 = type1;
         this.type2 = type2;
         this.level = level;
-        this.hp = hp;
         this.attack = attack;
         this.defense = defense;
         this.specialAttack = specialAttack;
         this.specialDefense = specialDefense;
         this.speed = speed;
-        this.hasMoves = hasMoves;
     }
 
     /**
@@ -53,9 +60,9 @@ public class Pokemon {
 
         int totalDamage = "physical".equals(move.getCategory())
                 ? ((((((2 * enemyPokemon.getLevel()) / 5) + 2) * move.getPower() * enemyPokemon.getAttack()
-                        / getDefense()) / 50) + 2)
+                / getDefense()) / 50) + 2)
                 : ((((((2 * enemyPokemon.getLevel()) / 5) + 2) * move.getPower() * enemyPokemon.getSpecialAttack()
-                        / getSpecialDefense()) / 50) + 2);
+                / getSpecialDefense()) / 50) + 2);
 
         if (Objects.equals(enemyPokemon.getType1(), move.getType())
                 || Objects.equals(enemyPokemon.getType2(), move.getType())) {
@@ -79,7 +86,7 @@ public class Pokemon {
         return random;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

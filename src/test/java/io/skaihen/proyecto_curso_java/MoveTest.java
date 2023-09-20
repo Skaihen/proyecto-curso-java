@@ -8,10 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import io.skaihen.proyecto_curso_java.classes.Move;
 
 @SpringBootTest
-public class MoveTest {
+class MoveTest {
 
     @Test
-    public void getMovesCSVTest() {
+    void getMovesCSVTest() {
 
         Move placaje = new Move("Placaje", "normal", "physical", 35, 40, 100, 0);
         Move ataqueRapido = new Move("Ataque Rapido", "normal", "physical", 30, 40, 100, 1);
