@@ -11,7 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
-import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Pokemon {
@@ -24,34 +23,15 @@ public class Pokemon {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message = "Name is required")
     private String name;
-
-    @NotBlank(message = "Type1 is required")
     private String type1;
-
-    @NotBlank(message = "Type2 is required")
     private String type2;
-
-    @NotBlank(message = "Level is required")
     private int level;
-
-    @NotBlank(message = "Hp is required")
     private int hp;
-
-    @NotBlank(message = "Attack is required")
     private int attack;
-
-    @NotBlank(message = "Defense is required")
     private int defense;
-
-    @NotBlank(message = "SpecialAttack is required")
     private int specialAttack;
-
-    @NotBlank(message = "SpecialDefense is required")
     private int specialDefense;
-
-    @NotBlank(message = "Speed is required")
     private int speed;
 
     protected Pokemon() {
