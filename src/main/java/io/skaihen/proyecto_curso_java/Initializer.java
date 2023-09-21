@@ -23,7 +23,5 @@ public class Initializer implements CommandLineRunner {
             pokemon.setName(name);
             pokemonRepository.save(pokemon);
         });
-
-        pokemonRepository.findAll().forEach(System.out::println);
     }
 }
