@@ -1,69 +1,66 @@
 package io.skaihen.proyecto_curso_java.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import java.util.Collection;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import io.skaihen.proyecto_curso_java.entities.Pokemon;
+import io.skaihen.proyecto_curso_java.model.Pokemon;
 import io.skaihen.proyecto_curso_java.repositories.PokemonRepository;
 import jakarta.validation.Valid;
 
-@Controller
+@RestController
+@RequestMapping("/api")
 public class PokemonController {
-    PokemonRepository pokemonRepository;
-    String redirectIndex = "redirect:/index";
+    private final Logger log = LoggerFactory.getLogger(PokemonController.class);
+    private PokemonRepository pokemonRepository;
 
-    @GetMapping("/newpokemon")
-    public String showAddPokemonForm(Pokemon pokemon, BindingResult result, Model model) {
-        return "add-pokemon";
+    public PokemonController(PokemonRepository pokemonRepository) {
+        this.pokemonRepository = pokemonRepository;
     }
 
-    @PostMapping("/addpokemon")
-    public String addPokemon(@Valid Pokemon pokemon, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "add-pokemon";
-        }
-
-        pokemonRepository.save(pokemon);
-        return redirectIndex;
+    @GetMapping("/pokemons")
+    Collection<Pokemon> getPokemons() {
+        return pokemonRepository.findAll();
     }
 
-    @GetMapping("/index")
-    public String showPokemonList(Model model) {
-        model.addAttribute("pokemons", pokemonRepository.findAll());
-        return "index";
+    @GetMapping("/pokemon/{id}")
+    ResponseEntity<Pokemon> getPokemonById(@PathVariable Long id) {
+        Optional<Pokemon> pokemon = pokemonRepository.findById(id);
+        return pokemon.map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/edit/{id}")
-    public String showUpdateForm(@PathVariable("id") long id, Model model) {
-        Pokemon pokemon = pokemonRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid pokemon Id:" + id));
-
-        model.addAttribute("pokemon", pokemon);
-        return "update-pokemon";
+    @PostMapping("/pokemon")
+    ResponseEntity<Pokemon> createPokemon(@Valid @RequestBody Pokemon pokemon) {
+        log.info("Request to create pokemon: {}", pokemon);
+        Pokemon result = pokemonRepository.save(pokemon);
+        return ResponseEntity.ok().body(result);
     }
 
-    @PostMapping("/update/{id}")
-    public String updatePokemon(@PathVariable("id") long id, @Valid Pokemon pokemon, BindingResult result,
-            Model model) {
-        if (result.hasErrors()) {
-            pokemon.setId(id);
-            return "update-pokemon";
-        }
-
-        pokemonRepository.save(pokemon);
-        return redirectIndex;
+    @PutMapping("/group/{id}")
+    ResponseEntity<Pokemon> updatePokemon(@Valid @RequestBody Pokemon pokemon) {
+        log.info("Request to update pokemon: {}", pokemon);
+        Pokemon result = pokemonRepository.save(pokemon);
+        return ResponseEntity.ok().body(result);
     }
 
-    @GetMapping("/delete/{id}")
-    public String deletePokemon(@PathVariable("id") long id, Model model) {
-        Pokemon pokemon = pokemonRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid pokemon Id:" + id));
-        pokemonRepository.delete(pokemon);
-        return redirectIndex;
+    @DeleteMapping("/pokemon/{id}")
+    public ResponseEntity<Pokemon> deleteGroup(@PathVariable Long id) {
+        log.info("Request to delete pokemon: {}", id);
+        pokemonRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 
 }
