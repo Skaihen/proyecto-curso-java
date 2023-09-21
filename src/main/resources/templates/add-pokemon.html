@@ -1,0 +1,43 @@
+<form action="#" th:action="@{/addpokemon}" th:object="${pokemon}" method="post">
+    <label for="name">Name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="Name">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+    <label for="type1">Type 1</label>
+    <input type="text" th:field="*{type1}" id="type1" placeholder="Type 1">
+    <span th:if="${#fields.hasErrors('type1')}" th:errors="*{type1}"></span>
+
+    <label for="type2">Type 2</label>
+    <input type="text" th:field="*{type2}" id="type2" placeholder="Type 2">
+    <span th:if="${#fields.hasErrors('type2')}" th:errors="*{type2}"></span>
+
+    <label for="level">Level</label>
+    <input type="text" th:field="*{level}" id="level" placeholder="Level">
+    <span th:if="${#fields.hasErrors('level')}" th:errors="*{level}"></span>
+
+    <label for="hp">Hit Points</label>
+    <input type="text" th:field="*{hp}" id="hp" placeholder="Hit Points">
+    <span th:if="${#fields.hasErrors('hp')}" th:errors="*{hp}"></span>
+
+    <label for="attack">Attack</label>
+    <input type="text" th:field="*{attack}" id="attack" placeholder="Attack">
+    <span th:if="${#fields.hasErrors('attack')}" th:errors="*{attack}"></span>
+
+    <label for="defense">Defense</label>
+    <input type="text" th:field="*{defense}" id="defense" placeholder="Defense">
+    <span th:if="${#fields.hasErrors('defense')}" th:errors="*{defense}"></span>
+
+    <label for="specialAttack">Special Attack</label>
+    <input type="text" th:field="*{specialAttack}" id="specialAttack" placeholder="Special Attack">
+    <span th:if="${#fields.hasErrors('specialAttack')}" th:errors="*{specialAttack}"></span>
+
+    <label for="specialDefense">Special Defense</label>
+    <input type="text" th:field="*{specialDefense}" id="specialDefense" placeholder="Special Defense">
+    <span th:if="${#fields.hasErrors('specialDefense')}" th:errors="*{specialDefense}"></span>
+
+    <label for="speed">Speed</label>
+    <input type="text" th:field="*{speed}" id="speed" placeholder="Speed">
+    <span th:if="${#fields.hasErrors('speed')}" th:errors="*{speed}"></span>
+
+    <input type="submit" value="Add Pokemon">
+</form>

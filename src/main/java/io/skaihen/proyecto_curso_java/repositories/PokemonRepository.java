@@ -1,12 +1,10 @@
 package io.skaihen.proyecto_curso_java.repositories;
 
-import io.skaihen.proyecto_curso_java.entities.Pokemon;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
+import io.skaihen.proyecto_curso_java.entities.Pokemon;
+
+@Repository
 public interface PokemonRepository extends CrudRepository<Pokemon, Long> {
-    Pokemon findById(long id);
-
-    Iterable<Pokemon> findAll();
-
-    Iterable<Pokemon> findByType1(String type1);
 }
