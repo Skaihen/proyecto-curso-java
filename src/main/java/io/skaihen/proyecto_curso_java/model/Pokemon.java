@@ -48,22 +48,11 @@ public class Pokemon {
      * @param enemyPokemon Pokemon enemigo.
      */
     public void receiveAttack(Move move, Pokemon enemyPokemon) {
-
-        // Cambiar ecuación de daño a [0.5 * power * attack/defense * type * stab *
-        // random(0.75,1)] + 1
-
         Map<String, Double> typeChart = Types.getTypeChart(move.getType());
 
-        int totalDamage = "physical".equals(move.getCategory())
-                ? ((((((2 * enemyPokemon.getLevel()) / 5) + 2) * move.getPower() * enemyPokemon.getAttack()
-                        / getDefense()) / 50) + 2)
-                : ((((((2 * enemyPokemon.getLevel()) / 5) + 2) * move.getPower() * enemyPokemon.getSpecialAttack()
-                        / getSpecialDefense()) / 50) + 2);
-
-        if (Objects.equals(enemyPokemon.getType1(), move.getType())
-                || Objects.equals(enemyPokemon.getType2(), move.getType())) {
-            totalDamage *= 1.5;
-        }
+        int totalDamage = (int) 0.5 * move.getPower()
+                * ("physical".equals(move.getCategory()) ? enemyPokemon.getAttack() / this.getDefense()
+                        : enemyPokemon.getSpecialAttack() / this.getSpecialDefense());
 
         for (Map.Entry<String, Double> entry : typeChart.entrySet()) {
             if (Objects.equals(entry.getKey(), this.getType1()) || Objects.equals(entry.getKey(), this.getType2())) {
@@ -71,10 +60,11 @@ public class Pokemon {
             }
         }
 
-        if (totalDamage >= 1) {
-            totalDamage = totalDamage * (this.getRandom().nextInt(39) + 217) / 255;
+        if (Objects.equals(enemyPokemon.getType1(), move.getType())
+                || Objects.equals(enemyPokemon.getType2(), move.getType())) {
+            totalDamage *= 1.5;
         }
 
-        this.hp -= totalDamage;
+        this.hp -= (totalDamage * (random.nextDouble(0.25) + 0.5)) + 1;
     }
 }
