@@ -45,7 +45,7 @@ function App() {
           tag={Link}
           to="/pokemons/new"
         >
-          Add Group
+          Add Pokemon
         </Button>
       </div>
       <table className="table">
@@ -76,7 +76,7 @@ function App() {
                   <Button
                     size="sm"
                     color="danger"
-                    onClick={() => remove(pokemon.id)}
+                    onClick={() => remove(pokemon.id!)}
                   >
                     Delete
                   </Button>
