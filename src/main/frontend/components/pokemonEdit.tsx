@@ -29,7 +29,7 @@ function PokemonEdit() {
     event.preventDefault();
 
     await fetch(
-      `http://127.0.0.1:8080/api/pokemon${pokemon.id ? `/${pokemon.id}` : ""}`,
+      `http://127.0.0.1:8080/api/pokemon${pokemon.id ? "/" + pokemon.id : ""}`,
       {
         method: pokemon.id ? "PUT" : "POST",
         headers: {
