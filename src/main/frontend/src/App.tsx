@@ -39,7 +39,12 @@ function App() {
     <div className="p-5">
       <div className="d-flex justify-content-between mb-4">
         <h1>Pokemon CRUD</h1>
-        <Button color="success" tag={Link} to="/pokemons/new">
+        <Button
+          className="d-flex align-items-center"
+          color="success"
+          tag={Link}
+          to="/pokemons/new"
+        >
           Add Group
         </Button>
       </div>
