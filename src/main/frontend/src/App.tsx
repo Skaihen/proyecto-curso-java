@@ -26,6 +26,7 @@ function App() {
 
   return (
     <div className="p-5">
+      <h1>Pokemon CRUD</h1>
       <table className="table">
         <thead>
           <tr>
