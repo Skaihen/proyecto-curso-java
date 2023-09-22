@@ -37,6 +37,7 @@ public class PokemonController {
         return pokemonRepository.findAll();
     }
 
+    @CrossOrigin
     @GetMapping("/pokemon/{id}")
     ResponseEntity<Pokemon> getPokemonById(@PathVariable Long id) {
         Optional<Pokemon> pokemon = pokemonRepository.findById(id);
@@ -44,6 +45,7 @@ public class PokemonController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @CrossOrigin
     @PostMapping("/pokemon")
     ResponseEntity<Pokemon> createPokemon(@Valid @RequestBody Pokemon pokemon) {
         log.info("Request to create pokemon: {}", pokemon);
@@ -51,6 +53,7 @@ public class PokemonController {
         return ResponseEntity.ok().body(result);
     }
 
+    @CrossOrigin
     @PutMapping("/pokemon/{id}")
     ResponseEntity<Pokemon> updatePokemon(@Valid @RequestBody Pokemon pokemon) {
         log.info("Request to update pokemon: {}", pokemon);
@@ -58,6 +61,7 @@ public class PokemonController {
         return ResponseEntity.ok().body(result);
     }
 
+    @CrossOrigin
     @DeleteMapping("/pokemon/{id}")
     public ResponseEntity<Pokemon> deletePokemon(@PathVariable Long id) {
         log.info("Request to delete pokemon: {}", id);

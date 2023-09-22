@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div className="p-5">
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between mb-4">
         <h1>Pokemon CRUD</h1>
         <Button color="success" tag={Link} to="/pokemons/new">
           Add Group
@@ -48,7 +48,9 @@ function App() {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">Actions</th>
+            <th scope="col" className="d-flex justify-content-end">
+              Actions
+            </th>
           </tr>
         </thead>
         <tbody>
