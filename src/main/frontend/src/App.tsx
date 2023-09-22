@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 
+type Pokemon = {
+  id: number;
+  name: string;
+};
+
 function App() {
-  const [pokemons, setPokemons] = useState([]);
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
 
-    fetch("api/pokemons").then((response) => console.log(response));
-    // .then((data) => {
-    //   setPokemons(data);
-    //   setLoading(false);
-    // });
+    fetch("http://127.0.0.1:8080/api/pokemons")
+      .then((response) => response.json())
+      .then((data) => {
+        setPokemons(data);
+        setLoading(false);
+      });
   }, []);
 
   if (loading) {
@@ -20,29 +26,20 @@ function App() {
 
   return (
     <div className="p-5">
-      <h1>Pokemon List</h1>
       <table className="table">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Name</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
+          {pokemons.map((pokemon) => (
+            <tr key={pokemon.id}>
+              <th scope="row">{pokemon.id}</th>
+              <td>{pokemon.name}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

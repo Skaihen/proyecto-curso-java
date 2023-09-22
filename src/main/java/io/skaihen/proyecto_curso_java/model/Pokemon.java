@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 
+import io.micrometer.common.lang.NonNull;
 import io.skaihen.proyecto_curso_java.classes.Move;
 import io.skaihen.proyecto_curso_java.classes.Types;
 import jakarta.persistence.Entity;
@@ -20,15 +21,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class Pokemon {
-    @Transient
-    private final Move[] hasMoves = new Move[4];
-
-    private final Random random = new Random();
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    @NonNull
     private String name;
     private String type1;
     private String type2;
@@ -39,6 +35,11 @@ public class Pokemon {
     private int specialAttack;
     private int specialDefense;
     private int speed;
+
+    @Transient
+    private final Move[] hasMoves = new Move[4];
+
+    private final Random random = new Random();
 
     /**
      * Calcula el daño recibido por un ataque enemigo y lo resta a la vida del

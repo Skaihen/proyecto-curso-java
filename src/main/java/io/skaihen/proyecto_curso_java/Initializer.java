@@ -18,7 +18,7 @@ public class Initializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        Stream.of("Bulbasaur", "Squirtle", "Charmander").forEach(name -> {
+        Stream.of("Bulbasaur", "Charmander", "Squirtle").forEach(name -> {
             Pokemon pokemon = new Pokemon();
             pokemon.setName(name);
             pokemonRepository.save(pokemon);

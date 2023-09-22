@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +31,7 @@ public class PokemonController {
         this.pokemonRepository = pokemonRepository;
     }
 
+    @CrossOrigin
     @GetMapping("/pokemons")
     Collection<Pokemon> getPokemons() {
         return pokemonRepository.findAll();
@@ -49,7 +51,7 @@ public class PokemonController {
         return ResponseEntity.ok().body(result);
     }
 
-    @PutMapping("/group/{id}")
+    @PutMapping("/pokemon/{id}")
     ResponseEntity<Pokemon> updatePokemon(@Valid @RequestBody Pokemon pokemon) {
         log.info("Request to update pokemon: {}", pokemon);
         Pokemon result = pokemonRepository.save(pokemon);
@@ -57,7 +59,7 @@ public class PokemonController {
     }
 
     @DeleteMapping("/pokemon/{id}")
-    public ResponseEntity<Pokemon> deleteGroup(@PathVariable Long id) {
+    public ResponseEntity<Pokemon> deletePokemon(@PathVariable Long id) {
         log.info("Request to delete pokemon: {}", id);
         pokemonRepository.deleteById(id);
         return ResponseEntity.ok().build();
