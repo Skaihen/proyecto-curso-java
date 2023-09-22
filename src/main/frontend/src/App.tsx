@@ -56,23 +56,25 @@ function App() {
             <tr key={pokemon.id}>
               <th scope="row">{pokemon.id}</th>
               <td>{pokemon.name}</td>
-              <ButtonGroup>
-                <Button
-                  size="sm"
-                  color="primary"
-                  tag={Link}
-                  to={"/pokemons/" + pokemon.id}
-                >
-                  Edit
-                </Button>
-                <Button
-                  size="sm"
-                  color="danger"
-                  onClick={() => remove(pokemon.id)}
-                >
-                  Delete
-                </Button>
-              </ButtonGroup>
+              <td className="d-flex justify-content-end">
+                <ButtonGroup>
+                  <Button
+                    size="sm"
+                    color="primary"
+                    tag={Link}
+                    to={"/pokemons/" + pokemon.id}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    size="sm"
+                    color="danger"
+                    onClick={() => remove(pokemon.id)}
+                  >
+                    Delete
+                  </Button>
+                </ButtonGroup>
+              </td>
             </tr>
           ))}
         </tbody>
